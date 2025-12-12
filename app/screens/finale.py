@@ -1,6 +1,8 @@
 from textual.screen import Screen
 from textual.widgets import Static, Header, Footer
 from textual.containers import Center, Middle
+from textual import events, on
+from app.screens.credits import CreditsScreen
 
 class FinaleScreen(Screen):
     def compose(self):
@@ -23,7 +25,8 @@ class FinaleScreen(Screen):
                     "Thanks for an epic year on your Mac\n\n"
                     "[white]Share your macwrap:[/white]\n\n"
                     f"{share_text}"
-                    "> brew install arinagrawal05/labs/macwrap"
+                    "> brew install arinagrawal05/labs/macwrap\n\n"
+                    "[dim]Press SPACE for credits[/dim]"
                 )
                 yield Static(share, id="finale")
         yield Footer()
@@ -32,3 +35,8 @@ class FinaleScreen(Screen):
         w = self.query_one("#finale")
         w.styles.opacity = 0
         w.styles.animate("opacity", value=1.0, duration=2.5)
+
+    @on(events.Key)
+    def on_key(self, event):
+        if event.key in ("space", "enter"):
+            self.app.push_screen(CreditsScreen())
