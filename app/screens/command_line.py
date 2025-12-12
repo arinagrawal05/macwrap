@@ -2,8 +2,8 @@ from textual.screen import Screen
 from textual.widgets import Static, Header, Footer
 from textual.containers import Center, Middle
 from textual import events, on
-from app.screens.file_creation import FileCreationScreen
-
+from app.screens.power_events import PowerEventsScreen
+ 
 class CommandLineScreen(Screen):
     def compose(self):
         yield Header()
@@ -33,4 +33,4 @@ class CommandLineScreen(Screen):
 
     def on_key(self, event):
         if event.key in ("space", "enter"):
-            self.app.push_screen(FileCreationScreen())
+            self.app.push_screen(PowerEventsScreen())

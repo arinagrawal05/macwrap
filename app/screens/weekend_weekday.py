@@ -2,8 +2,8 @@ from textual.screen import Screen
 from textual.widgets import Static, Header, Footer
 from textual.containers import Center, Middle
 from textual import events, on
-from app.screens.heatmap import HourlyHeatmapScreen
-
+from app.screens.forgotten_app import ForgottenAppScreen
+ 
 class WeekendVsWeekdayScreen(Screen):
     def compose(self):
         yield Header()
@@ -34,4 +34,4 @@ class WeekendVsWeekdayScreen(Screen):
 
     def on_key(self, event):
         if event.key in ("space", "enter"):
-            self.app.push_screen(HourlyHeatmapScreen())
+            self.app.push_screen(ForgottenAppScreen())

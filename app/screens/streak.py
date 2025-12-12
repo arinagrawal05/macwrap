@@ -2,7 +2,7 @@ from textual.screen import Screen
 from textual.widgets import Static, Header, Footer
 from textual.containers import Center, Middle
 from textual import events, on
-from app.screens.focus import FocusHoursScreen
+from app.screens.weekend_weekday import WeekendVsWeekdayScreen
 
 class StreakScreen(Screen):
     def compose(self):
@@ -30,4 +30,4 @@ class StreakScreen(Screen):
 
     def on_key(self, event):
         if event.key in ("space", "enter"):
-            self.app.push_screen(FocusHoursScreen())
+            self.app.push_screen(WeekendVsWeekdayScreen())
