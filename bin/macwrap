@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Simple wrapper that delegates to the installed libexec script.
+# Homebrew formula will set libexec path; when developing locally, this executes the repo script.
+if [ -x "$(command -v python3)" ]; then
+  exec python3 "$(dirname "$0")/../macwrap.py" "$@"
+else
+  echo "python3 is required to run macwrap" >&2
+  exit 1
+fi
